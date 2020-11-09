@@ -3,6 +3,9 @@ from typing import List
 from graph.graph import Graph
 from graph.search_algorithm import search_shortest_paths_from
 
+INPUT_FILE_NAME = "gamsrv.in"
+OUTPUT_FILE_NAME = "gamsrv.out"
+
 
 def string_to_int_list(string: str) -> List[int]:
     int_list = [int(value_str) for value_str in string.split()]
@@ -13,7 +16,7 @@ if __name__ == '__main__':
 
     graph = Graph()
 
-    with open("gamsrv.in", "r") as input_file:
+    with open(INPUT_FILE_NAME, "r") as input_file:
         number_of_nodes, number_of_connections = string_to_int_list(input_file.readline().strip())
         clients_indexes = string_to_int_list(input_file.readline().strip())
         for line in input_file:
@@ -29,5 +32,8 @@ if __name__ == '__main__':
                 min_latency = current_max_latency
             else:
                 min_latency = current_max_latency if current_max_latency < min_latency else min_latency
+
+    with open(OUTPUT_FILE_NAME, "w") as output_file:
+        output_file.write(str(min_latency))
 
     print(min_latency)
