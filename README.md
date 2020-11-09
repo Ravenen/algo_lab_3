@@ -1,4 +1,5 @@
-##Задача: Iгровий сервер
+## Задача: Iгровий сервер
+
 Код задачi: GAMSRV
 
 Важливим фактором для багатокористувацької онлайн-гри є низька мережева затримка
@@ -16,14 +17,14 @@ Server.
 через iншого клiєнта).
 - Усi затримки — сталi додатнi числа.  
 
-![example graph](https://github.com/ravenen/algo_lab_3/blob/dev/example_1.png?raw=true)
+![example graph](https://github.com/ravenen/algo_lab_3/blob/dev/img/example_1.png?raw=true)
 >Для прикладу вище, затримки до клiєнтiв становлять:
 >- Client 1: 10 + 80 + 50 = 140 ms
 >- Client 2: 100 + 50 = 150 ms
 >- Client 3: 20 ms
 
 Максимальною затримкою в такому випадку є 150 ms. Однак, якщо ми помiняємо ролями вузли “Router 2” i “Server”, затримки скоротяться до 90 ms, 100 ms i 70 ms вiдповiдно, тодi максимальна затримка буде становити 100 ms.  
-![alt text](https://github.com/ravenen/algo_lab_3/blob/dev/example_2.png?raw=true)
+![example graph](https://github.com/ravenen/algo_lab_3/blob/dev/img/example_2.png?raw=true)
 
 Ви розробляєте онлайн-гру для користувачiв зi всiєї країни, i бажаєте розмiстити центральний iгровий сервер таким чином, щоб максимальна затримка мiж сервером i кожним клiєнтом була мiнiмальною. В якостi сервера можна вибрати будь-який вузол мережi, який не є клiєнтом.  
 Маючи iнформацiю про топологiю мережi (якi вузли з’єднанi з якими, i яка затримка
