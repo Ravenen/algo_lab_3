@@ -1,19 +1,26 @@
+from typing import List
+
 from graph.graph import Graph
 from graph.search_algorithm import search_shortest_paths_from
+
+
+def string_to_int_list(string: str) -> List[int]:
+    int_list = [int(value_str) for value_str in string.split()]
+    return int_list
+
 
 if __name__ == '__main__':
 
     graph = Graph()
-    graph.add_edges_from_vertexes(1, 3, 10)
-    graph.add_edges_from_vertexes(3, 4, 80)
-    graph.add_edges_from_vertexes(4, 5, 50)
-    graph.add_edges_from_vertexes(5, 6, 20)
-    graph.add_edges_from_vertexes(2, 3, 40)
-    graph.add_edges_from_vertexes(2, 4, 100)
 
-    clients_indexes = [1, 2, 6]
+    with open("gamsrv.in", "r") as input_file:
+        number_of_nodes, number_of_connections = string_to_int_list(input_file.readline().strip())
+        clients_indexes = string_to_int_list(input_file.readline().strip())
+        for line in input_file:
+            start_node, end_node, latency = string_to_int_list(line.strip())
+            graph.add_edges_from_vertexes(start_node, end_node, latency)
+
     min_latency = -1
-
     for vertex_index in graph.get_vertexes():
         if vertex_index not in clients_indexes:
             shortest_paths = search_shortest_paths_from(vertex_index, graph)
