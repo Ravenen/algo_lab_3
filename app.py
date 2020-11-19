@@ -12,8 +12,7 @@ def string_to_int_list(string: str) -> List[int]:
     return int_list
 
 
-if __name__ == '__main__':
-
+def main():
     graph = Graph()
 
     with open(INPUT_FILE_NAME, "r") as input_file:
@@ -33,4 +32,6 @@ if __name__ == '__main__':
     with open(OUTPUT_FILE_NAME, "w") as output_file:
         output_file.write(str(min_latency))
 
-    print(min_latency)
+
+if __name__ == '__main__':
+    main()
