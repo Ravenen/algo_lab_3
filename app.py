@@ -8,7 +8,7 @@ OUTPUT_FILE_NAME = "gamsrv.out"
 
 
 def string_to_int_list(string: str) -> List[int]:
-    int_list = [int(value_str) for value_str in string.split()]
+    int_list = [int(value_str) for value_str in string.strip().split()]
     return int_list
 
 
@@ -17,11 +17,11 @@ if __name__ == '__main__':
     graph = Graph()
 
     with open(INPUT_FILE_NAME, "r") as input_file:
-        number_of_nodes, number_of_connections = string_to_int_list(input_file.readline().strip())
-        clients_indexes = string_to_int_list(input_file.readline().strip())
+        number_of_nodes, number_of_connections = string_to_int_list(input_file.readline())
+        clients = string_to_int_list(input_file.readline())
         for line in input_file:
-            start_node, end_node, latency = string_to_int_list(line.strip())
-            graph.add_edges_from_vertexes(start_node, end_node, latency)
+            start_node, end_node, latency = string_to_int_list(line)
+            graph.add_bidirectional_edge_from_vertexes(start_node, end_node, latency)
 
     min_latency = -1
     for vertex_index in graph.get_vertexes():
