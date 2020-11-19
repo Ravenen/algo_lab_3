@@ -23,15 +23,12 @@ if __name__ == '__main__':
             start_node, end_node, latency = string_to_int_list(line)
             graph.add_bidirectional_edge_from_vertexes(start_node, end_node, latency)
 
-    min_latency = -1
-    for vertex_index in graph.get_vertexes():
-        if vertex_index not in clients_indexes:
-            shortest_paths = search_shortest_paths_from(vertex_index, graph)
-            current_max_latency = max([shortest_paths[client_index] for client_index in clients_indexes])
-            if min_latency == -1:
-                min_latency = current_max_latency
-            else:
-                min_latency = current_max_latency if current_max_latency < min_latency else min_latency
+    min_latency = 1e12
+    for vertex in graph.get_vertexes():
+        if vertex not in clients:
+            shortest_paths = search_shortest_paths_from(vertex, graph)
+            current_max_latency = max([shortest_paths[client] for client in clients])
+            min_latency = min(current_max_latency, min_latency)
 
     with open(OUTPUT_FILE_NAME, "w") as output_file:
         output_file.write(str(min_latency))
