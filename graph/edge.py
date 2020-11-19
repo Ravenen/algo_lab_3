@@ -9,3 +9,6 @@ class Edge(object):
 
     def __eq__(self, other):
         return self.end_vertex == other.end_vertex and self.edge_weight == other.edge_weight
+
+    def __repr__(self) -> str:
+        return "Edge[" + str(self.end_vertex) + ", " + str(self.edge_weight) + "]"
