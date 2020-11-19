@@ -1,10 +1,12 @@
 from typing import Tuple, List, Dict
 
+from graph.edge import Edge
+
 
 class Graph(object):
 
     def __init__(self):
-        self.adjacencies: Dict[int, List[Tuple[int, int]]] = {}
+        self.adjacencies: Dict[int, List[Edge]] = {}
 
     def add_edges_from_vertexes(self, vertex_first_index: int, vertex_second_index: int, weight: int):
         self.__add_edge(vertex_first_index, vertex_second_index, weight)
